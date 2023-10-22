@@ -1,0 +1,55 @@
+<!-- <mat-form-field appearance="outline">
+    <mat-label>Outline form field</mat-label>
+        <input matInput placeholder="Placeholder">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+</mat-form-field> -->
+<!-- <mat-form-field>
+    <mat-label>Expense Name</mat-label>
+    <input matInput>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Expense Category</mat-label>
+    <mat-select *ngFor="let cat of categories">
+      <mat-option value={{cat}}>{{cat}}</mat-option>
+      <mat-option value="two">Second option</mat-option>
+    </mat-select>
+  </mat-form-field> -->
+  <form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted">
+    <input type="hidden" name="expenseId" [value]="service.formData.expenseId" novalidate>
+    <div class="class mb-3">
+        <label>Expense Name</label>
+        <input class="form-control form-control-md" placeholder="Expense Name"
+        #expenseName="ngModel" name="expenseName" 
+        [(ngModel)] = "service.formData.expenseName" required>
+    </div>
+    <div class="class mb-3">
+        <label>Expense Category</label>
+        <select class="form-select form-select-md"
+        #expenseName="ngModel" name="expenseCategory" 
+        [(ngModel)] = "service.formData.expenseCategory" required>
+            <!-- <option value="">------</option> -->
+            <option value="Food">Food</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Others">Others</option>
+          </select>
+    </div>
+    <div class="class mb-3">
+        <label>Expense Date</label>
+        <input class="form-control form-control-md" type="date"
+        #expenseDate = "ngModel" name="expenseDate" 
+        [(ngModel)]="service.formData.expenseDate" required/>
+    </div>
+    <div class="class mb-3">
+        <label>Expense Amount</label>
+        <input class="form-control form-control-md" placeholder="Expense Amount"
+        #expenseAmount="ngModel" name="expenseAmount" 
+        [(ngModel)] = "service.formData.expenseAmount" required >
+    </div>
+    <div class="d-grid">
+        <button class="btn btn-lg btn-success" type="submit">
+            Submit
+        </button>
+    </div>
+  </form>
