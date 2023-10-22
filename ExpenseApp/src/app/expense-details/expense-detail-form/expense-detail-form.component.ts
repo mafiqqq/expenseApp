@@ -4,16 +4,18 @@ import { MatIconModule } from "@angular/material/icon";
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-import { NgForm } from "@angular/forms";
+import { FormsModule, NgForm } from "@angular/forms";
 import { ExpenseDetail } from 'src/app/shared/expense-detail.model';
 import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-expense-detail-form',
   templateUrl: './expense-detail-form.component.html',
   styleUrls: ['./expense-detail-form.component.css'],
-  // standalone: true,
+  standalone: true,
+  imports: [CommonModule, FormsModule]
   // imports: [MatFormFieldModule, MatInputModule, 
   //   MatIconModule, MatSelectModule]
 })

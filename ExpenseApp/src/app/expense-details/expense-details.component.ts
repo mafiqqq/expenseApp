@@ -2,11 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { ExpenseDetailService } from '../shared/expense-detail.service';
 import { ExpenseDetail } from '../shared/expense-detail.model'
 import { ToastrService } from 'ngx-toastr';
+import { AppComponent } from '../app.component';
+import { CommonModule } from '@angular/common';
+import { ExpenseDetailFormComponent } from './expense-detail-form/expense-detail-form.component';
+// import { ExpenseDetailComponent } from '../app.component';
 
 @Component({
   selector: 'app-expense-details',
   templateUrl: './expense-details.component.html',
-  styleUrls: ['./expense-details.component.css']
+  styleUrls: ['./expense-details.component.css'],
+  standalone: true,
+  imports: [CommonModule, AppComponent, ExpenseDetailFormComponent],
+  providers: [ToastrService]
 })
 export class ExpenseDetailsComponent implements OnInit {
 
