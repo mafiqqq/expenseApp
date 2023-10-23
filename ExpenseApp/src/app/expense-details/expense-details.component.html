@@ -6,7 +6,7 @@
         <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between
             align-items-start mb-2 border px-4 py-3 rounded-3" 
-                *ngFor="let ed of service.list">    
+                *ngFor="let ed of expenses">    
                 <div class="flex-grow-1 mouse-hover"
                 (click)="populateForm(ed)">
                     <div class="class fw-bold">{{ ed.expenseName }}</div>
@@ -20,4 +20,40 @@
             </li>
         </ul>
     </div>
+</div>
+
+<div class="row mt-5">
+    <mat-form-field>
+        <mat-label>Filter Table</mat-label>
+        <input matInput placeholder="" search />
+    </mat-form-field>
+
+    <table mat-table matSort [dataSource]="dataSource">
+        <ng-container matColumnDef="expenseId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+            <td mat-cell *matCellDef="let row">{{ row.expenseId }}</td>
+        </ng-container>  
+        <ng-container matColumnDef="expenseName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Expense Name</th>
+            <td mat-cell *matCellDef="let row">{{row.expenseName}}</td>
+        </ng-container>  
+        <ng-container matColumnDef="expenseCategory">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Expense Category</th>
+            <td mat-cell *matCellDef="let row">{{row.expenseCategory}}</td>
+        </ng-container>  
+        <ng-container matColumnDef="expenseDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Expense Date</th>
+            <td mat-cell *matCellDef="let row">{{row.expenseDate}}</td>
+        </ng-container>  
+        <ng-container matColumnDef="expenseAmount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Expense Amount</th>
+            <td mat-cell *matCellDef="let row">{{row.expenseAmount}}</td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumn"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5,10,25]" aria-label="select"></mat-paginator>
+
 </div>

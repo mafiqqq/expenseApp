@@ -6,6 +6,9 @@ import { ExpenseDetailFormComponent } from './expense-details/expense-detail-for
 import { ExpenseDetailService } from './shared/expense-detail.service';
 import { ExpenseDetail } from './shared/expense-detail.model';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { CdkColumnDef } from '@angular/cdk/table';
 
 @Component({
   selector: 'app-root',
@@ -15,12 +18,16 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     HttpClientModule,
     ExpenseDetailsComponent,
-    ExpenseDetailFormComponent,
+    FooterComponent,
+    HeaderComponent,
     MatCardModule, 
     MatButtonModule],
-  providers: [ExpenseDetailService,
-    ExpenseDetail],
+  providers: [
+    ExpenseDetailService,
+    ExpenseDetail,
+    CdkColumnDef
+  ],
 })
 export class AppComponent {
-  title = 'ExpenseApp';
+  
 }

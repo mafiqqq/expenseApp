@@ -13,6 +13,8 @@ import {MatCardModule} from '@angular/material/card';
 import { ToastrModule } from 'ngx-toastr'
 import { ExpenseDetailService } from './shared/expense-detail.service';
 import { ExpenseDetail } from './shared/expense-detail.model';
+import { FooterComponent } from './footer/footer.component';
+import { CdkColumnDef } from '@angular/cdk/table';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,12 @@ import { ExpenseDetail } from './shared/expense-detail.model';
     AppComponent,
     ExpenseDetailsComponent,
     ExpenseDetailFormComponent,
+    FooterComponent
   ],
-  providers: [ExpenseDetailService,
-    ExpenseDetail],
+  providers: [
+    ExpenseDetailService,
+    ExpenseDetail,
+    CdkColumnDef
+  ],
 })
 export class AppModule { }

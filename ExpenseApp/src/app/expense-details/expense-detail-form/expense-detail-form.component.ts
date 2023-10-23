@@ -8,6 +8,7 @@ import { FormsModule, NgForm } from "@angular/forms";
 import { ExpenseDetail } from 'src/app/shared/expense-detail.model';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -44,6 +45,7 @@ export class ExpenseDetailFormComponent {
     .subscribe({
       next: res => {
         this.service.list = res as ExpenseDetail[]
+        this.service.dataSource = new MatTableDataSource(this.service.list)
         this.service.resetForm(form)
         this.toastr.success('New expense added successfully!', 'Expense Detail Register')
       },
