@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+// import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,13 @@ export class ExpenseDetailService {
   formData: ExpenseDetail = new ExpenseDetail();
   formSubmitted:boolean = false;
   dataSource!: MatTableDataSource<ExpenseDetail>;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  // @ViewChild(MatPaginator) paginator!: MatPaginator;
   // @ViewChild(MatSort) sort!: MatSort;
   expenses:any;
+
+  // private listSubject = new BehaviorSubject<ExpenseDetail[]>([]);
+
+  // list$ = this.listSubject.asObservable();
 
   constructor(private http:HttpClient) { }
 
@@ -28,8 +33,9 @@ export class ExpenseDetailService {
       .subscribe({
         next: res => {
           this.list = res as ExpenseDetail[];
+          // this.listSubject.next(this.list);
           this.dataSource = new MatTableDataSource<ExpenseDetail>(this.list);
-          this.dataSource.paginator = this.paginator;
+          // this.dataSource.paginator = this.paginator;
           // this.dataSource.sort = this.sort;
         },
         error: err => {

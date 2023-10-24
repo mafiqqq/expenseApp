@@ -22,12 +22,15 @@
     </div>
 </div>
 
-<div class="row mt-5">
+<div class="row">
     <mat-form-field>
         <mat-label>Filter Table</mat-label>
-        <input matInput placeholder="" search />
+        <input matInput (keyup)="Filterchange($event)" placeholder="" search />
     </mat-form-field>
-
+    <!-- <div class="col-4">
+        <app-expense-detail-form />
+    </div> -->
+    <div class="col-12">
     <table mat-table matSort [dataSource]="dataSource">
         <ng-container matColumnDef="expenseId">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
@@ -49,11 +52,19 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Expense Amount</th>
             <td mat-cell *matCellDef="let row">{{row.expenseAmount}}</td>
         </ng-container>
+        <ng-container matColumnDef="expenseAction">
+            <th mat-header-cell *matHeaderCellDef >Action</th>
+            <td mat-cell *matCellDef="let row">
+                <!-- <button mat-raised-button color="primary" (click)="populateForm(row)">Edit</button> -->
+                <button mat-raised-button color="primary" (click)="openDialog()">Edit</button>
+                <button mat-raised-button color="warn" (click)="deleteExpense(row.expenseId)">Delete</button>
+            </td>
+        </ng-container>
         
         <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumn"></tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[5,10,25]" aria-label="select"></mat-paginator>
-
+    <mat-paginator [pageSizeOptions]="[5,10,25]" aria-label="select" showFirstLastButtons></mat-paginator>
+    </div>
 </div>

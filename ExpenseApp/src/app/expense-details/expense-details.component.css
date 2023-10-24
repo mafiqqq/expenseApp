@@ -1,0 +1,13 @@
+button {
+    margin: 2px;
+}
+
+th {
+    background-color: darkviolet !important;
+    color: beige;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+  }

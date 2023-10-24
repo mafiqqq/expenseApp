@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { ExpenseDetailService } from 'src/app/shared/expense-detail.service';
 import { MatIconModule } from "@angular/material/icon";
 import {MatInputModule} from '@angular/material/input';
@@ -9,6 +9,9 @@ import { ExpenseDetail } from 'src/app/shared/expense-detail.model';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @Component({
@@ -16,14 +19,24 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './expense-detail-form.component.html',
   styleUrls: ['./expense-detail-form.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [
+    HttpClientModule,
+    CommonModule, 
+    FormsModule, 
+    MatDialogModule,
+    MatButtonModule,
+  ]
   // imports: [MatFormFieldModule, MatInputModule, 
   //   MatIconModule, MatSelectModule]
+})
+@Injectable({
+  providedIn: 'root'
 })
 export class ExpenseDetailFormComponent {
 
   // Inject the toastr service
-  constructor(public service: ExpenseDetailService, private toastr: ToastrService) {
+  constructor(public service: ExpenseDetailService, 
+    private toastr: ToastrService) {
 
   }
 
@@ -31,11 +44,12 @@ export class ExpenseDetailFormComponent {
 
   onSubmit(form:NgForm) {
     this.service.formSubmitted = true
+    console.log(form)
     if(form.valid) {
       if (this.service.formData.expenseId == 0) {
-        this.insertRecord(form)
+        // this.insertRecord(form)
       } else {
-        this.updateRecord(form)
+        // this.updateRecord(form)
       }
     }
   }
@@ -64,6 +78,9 @@ export class ExpenseDetailFormComponent {
       error: err => {console.log(err)}
     })
   }
+
+  // Test out modal implementation
+
 
 
 

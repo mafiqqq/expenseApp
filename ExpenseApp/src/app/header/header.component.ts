@@ -9,5 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  title = 'ExpenseApp';
+  title = 'Mafiqq Portfolio';
 }

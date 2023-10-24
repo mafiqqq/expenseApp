@@ -8,6 +8,7 @@ import { ExpenseDetailFormComponent } from './expense-details/expense-detail-for
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 import { ToastrModule } from 'ngx-toastr'
@@ -28,7 +29,8 @@ import { CdkColumnDef } from '@angular/cdk/table';
     AppComponent,
     ExpenseDetailsComponent,
     ExpenseDetailFormComponent,
-    FooterComponent
+    FooterComponent,
+    MatDialogModule
   ],
   providers: [
     ExpenseDetailService,

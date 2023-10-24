@@ -15,6 +15,8 @@
       <mat-option value="two">Second option</mat-option>
     </mat-select>
   </mat-form-field> -->
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
   <form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted">
     <input type="hidden" name="expenseId" [value]="service.formData.expenseId" novalidate>
     <div class="class mb-3">
@@ -53,3 +55,8 @@
         </button>
     </div>
   </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions>

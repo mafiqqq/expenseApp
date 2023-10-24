@@ -13,7 +13,7 @@ namespace ExpenseAPI.Models
         public string ExpenseCategory { get; set; } = "";
         [Column(TypeName = "Date")]
         public DateTime ExpenseDate { get; set; }
-        [Column(TypeName = "decimal(18,4)")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal ExpenseAmount { get; set; }
 
     }
