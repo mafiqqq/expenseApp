@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatStepperModule } from '@angular/material/stepper';
+import {MatInputModule} from '@angular/material/input';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,9 @@ import { MatCardModule } from '@angular/material/card';
     CommonModule, 
     HeaderComponent, 
     FooterComponent, 
-    MatCardModule
+    MatCardModule,
+    MatStepperModule,
+    MatInputModule
   ],
 })
 export class HomeComponent {

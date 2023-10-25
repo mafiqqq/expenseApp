@@ -83,6 +83,7 @@ export class ExpenseDetailsComponent {
         next: res => {
           this.service.list = res as ExpenseDetail[]
           this.toastr.error('Deleted expense successfully', 'Expense Detail Register')
+          this.dataSource = new MatTableDataSource(this.service.list)
         },
         error: err => {console.log(err)}
       })
