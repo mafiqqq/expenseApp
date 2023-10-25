@@ -12,6 +12,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ExpenseDetailsComponent } from '../expense-details.component';
 
 
 @Component({
@@ -25,31 +28,37 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule, 
     MatDialogModule,
     MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    ExpenseDetailsComponent,
   ]
-  // imports: [MatFormFieldModule, MatInputModule, 
-  //   MatIconModule, MatSelectModule]
 })
 @Injectable({
   providedIn: 'root'
 })
 export class ExpenseDetailFormComponent {
 
+  categoryOptions: string[] = [
+    'Food', 
+    'Entertainment', 
+    'Utilities', 
+    'Others'];
+  titleForm!: "Enter New Expense";
+  maxDate!: string;
   // Inject the toastr service
   constructor(public service: ExpenseDetailService, 
-    private toastr: ToastrService) {
-
+    private toastr: ToastrService, public mod: ExpenseDetailsComponent) {
   }
-
-  // const EXPENSE_CATEGORIES: ExpenseCategories[] = ['Food', 'Shopping', 'Entertainment', 'Utilities', 'Others']
 
   onSubmit(form:NgForm) {
     this.service.formSubmitted = true
     console.log(form)
     if(form.valid) {
       if (this.service.formData.expenseId == 0) {
-        // this.insertRecord(form)
+        this.insertRecord(form)
       } else {
-        // this.updateRecord(form)
+        this.updateRecord(form)
       }
     }
   }
@@ -59,12 +68,13 @@ export class ExpenseDetailFormComponent {
     .subscribe({
       next: res => {
         this.service.list = res as ExpenseDetail[]
-        this.service.dataSource = new MatTableDataSource(this.service.list)
+        this.mod.dataSource = new MatTableDataSource(this.service.list)
         this.service.resetForm(form)
         this.toastr.success('New expense added successfully!', 'Expense Detail Register')
       },
       error: err => {console.log(err)}
-    })
+    });
+    
   }
 
   updateRecord(form:NgForm) {
@@ -72,16 +82,12 @@ export class ExpenseDetailFormComponent {
     .subscribe({
       next: res => {
         this.service.list = res as ExpenseDetail[]
+        this.mod.dataSource = new MatTableDataSource(this.service.list)
         this.service.resetForm(form)
         this.toastr.info('Updated expense', 'Expense Detail Register')
       },
       error: err => {console.log(err)}
-    })
+    });
   }
-
-  // Test out modal implementation
-
-
-
 
 }

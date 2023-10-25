@@ -17,6 +17,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-expense-details',
@@ -33,19 +35,19 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    HeaderComponent,
+    FooterComponent
   ],
   providers: [ToastrService]
 })
-// export class ExpenseDetailsComponent implements OnInit {
+
 export class ExpenseDetailsComponent {
 
   displayedColumn: string[] = ['expenseId', 'expenseName', 'expenseCategory', 'expenseDate', 'expenseAmount', 'expenseAction']
   dataSource!: MatTableDataSource<ExpenseDetail>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  // dataSource!: MatTableDataSource<ExpenseDetail>
-  // sort!: MatSort
   newlist: any;
   expenses: any
   constructor(public service: ExpenseDetailService, 
@@ -54,7 +56,6 @@ export class ExpenseDetailsComponent {
       console.log(data);
       this.expenses = data;
       this.dataSource = new MatTableDataSource(this.expenses);
-      // this.dataSource = this.service.dataSource;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
@@ -68,35 +69,10 @@ export class ExpenseDetailsComponent {
     this.dataSource.filter=value;
   }
 
-  openDialog() {
-    this.dialog.open(ExpenseDetailFormComponent);
-    console.log('dialog');
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`);
-    // });
-  }
-
-  // ngOnInit() {
-    // this.service.refreshList();
-    // console.log(this.service.list$.subscribe(newList => {
-    //   console.log()
-    // }));
-    // this.expenses = this.service;
-    // this.service.refreshList();
-    // console.log(this.service.dataSource.sort);
-    // this.service.dataSource.sort = this.sort;
-    // console.log(this.service.url);
-    // console.log(this.service.list);
-    // this.dataSource = this.service.dataSource;
-    // this.dataSource.sort = this.sort;
-    // this.dataSource.paginator = this.paginator;
-    // this.service.dataSource.paginator = this.paginator;
-    // this.service.dataSource.sort = this.sort;
-  // }
-
   populateForm(selectedRecord:ExpenseDetail) {
     // To avoid reuse of same object assign to a new object
     console.log(selectedRecord);
+    selectedRecord.expenseDate = selectedRecord.expenseDate.substring(0,10);
     this.service.formData = Object.assign({}, selectedRecord);
   }
 

@@ -9,6 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { CdkColumnDef } from '@angular/cdk/table';
+import { AppModule } from './app.module';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,11 +20,9 @@ import { CdkColumnDef } from '@angular/cdk/table';
   standalone: true,
   imports: [
     HttpClientModule,
-    ExpenseDetailsComponent,
-    FooterComponent,
-    HeaderComponent,
-    MatCardModule, 
-    MatButtonModule],
+    CommonModule,
+    RouterModule,
+  ],
   providers: [
     ExpenseDetailService,
     ExpenseDetail,
