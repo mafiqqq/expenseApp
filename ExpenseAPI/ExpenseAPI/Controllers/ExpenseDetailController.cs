@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ExpenseAPI.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace ExpenseAPI.Controllers
 {
@@ -24,11 +25,12 @@ namespace ExpenseAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ExpenseDetail>>> GetExpenseDetails()
         {
-          // Check if the table in db is found
-        if (_context.ExpenseDetails == null)
-          {
-              return NotFound();
-          }
+            // Check if the table in db is found
+            if (_context.ExpenseDetails == null)
+              {
+                  return NotFound();
+              }
+
             return await _context.ExpenseDetails.ToListAsync();
         }
 

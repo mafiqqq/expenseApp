@@ -11,9 +11,10 @@ namespace ExpenseAPI.Models
         public string ExpenseName { get; set; } = "";
         [Column(TypeName = "nvarchar(25)")]
         public string ExpenseCategory { get; set; } = "";
-        [Column(TypeName = "Date")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime ExpenseDate { get; set; }
-        [Column(TypeName = "decimal(18,4)")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal ExpenseAmount { get; set; }
 
     }

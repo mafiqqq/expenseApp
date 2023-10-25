@@ -1,0 +1,77 @@
+<app-header />
+<div class="content">
+    <!-- Resources -->
+    <div class="container-fluid bg-dark text-light p-5">
+        <div class="container bg-dark p-5">
+            <h1 class="display-4">Welcome to my Portfolio Website</h1>
+            <hr>
+            <p>Mohamed Afiq | Software Development Engineer | Gold II Valorant Player | Anime Fans | </p>
+        </div>
+    </div>
+    
+    <h2>About Me</h2>
+    <mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>Software Engineer</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>A results-oriented software developer with 3 years plus of experience, seeking an invigorating career change that
+        presents stimulating challenges and fuels my passion for growth. Recognized for being a fast learner, motivated, and
+        disciplined, I am eager to apply my skills and expand my expertise in web development, APIs, databases, and DevOps.
+        With a keen interest in these areas, I am driven to contribute to a dynamic and collaborative team environment while
+        continuously enhancing my technical proficiencies.</p>
+    </mat-card-content>
+    </mat-card>
+
+    <h2>My Journey</h2>
+    <div class="container">
+        <mat-stepper [linear]="false" #stepper>
+        <mat-step label="Bachelors Degree">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title>Universiti Putra Malaysia</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>Developed a fraud detection system to demonstrate a different approach of database which is using graph
+                        database (Neo4j) to solve complex connected problems. Performed data visualization of the rich-connected nodes
+                        using SigmaJS. The project uses an approach of GRAND Stack (GraphQL, React, Apollo & Neo4j Graph Database)
+                    </p>
+                </mat-card-content>
+                </mat-card>
+        </mat-step>
+        <mat-step label="Internship">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title>Yield Integration Intern</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>Reduced complexity and time for data analysis to observe defect trend efficiently by performing complex SQL
+                        queries to retrieve the data then developed a data visualization dashboard using Python libraries such as Bokeh
+                        for graphical charts, Pandas and Numpy for data cleaning and HTML, CSS, Javascript for single page
+                        application. The resulting solution was successfully utilized by diverse teams from Malaysia, Vietnam, and
+                        Chengdu.
+                        Performed statistical analysis to determine the abnormality in data such as shifted signals and spike in trend
+                        using JMP software tool and used Scripthost to set a scheduler</p>
+                </mat-card-content>
+                </mat-card>
+        </mat-step>
+        <mat-step label="First Job">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title>Software Development Engineer</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>Developed a front-end and back-end web interface and wrote unit tests and integration test ( using Python Django,
+                        Vue JS, Pytest, Cypress ) for system test using Test-Driven Development
+                        Lead the project using Agile methodologies on redesigning of database schema and development for database
+                        migration from MariaDB to PostgreSQL. Wrote several stored procedures and function which improves execution by 5
+                        times. Written multiple Python scripts to support the automation for database using Pymongo and MySQL Connector.
+                        Tool owner for trace generation application. Maintained and continuously enhanced the application by gathering
+                        requirements and performing pilot run with the user ( using Perl, Java, MariaDB, MongoDB)</p>
+                </mat-card-content>
+                </mat-card>
+        </mat-step>
+      </mat-stepper>
+    </div>
+</div>
+<app-footer />
