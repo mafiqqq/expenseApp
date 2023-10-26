@@ -1,7 +1,29 @@
-# expenseApp
+# Expense App
 
 How to get this running?
-1. ExpenseAPI - For the API management
+
+ExpenseAPI - For the API management
+
+a) After successfuly clone and `cd ExpenseAPI` proceed to run the following commands:
+```
+dotnet restore
+```
+
+b) Install `dotnet-ef` or verify the installation
+```
+dotnet tool install --global dotnet-ef
+```
+
+c) Update database by applying the Migration
+```
+dotnet ef database update
+```
+
+d) Run the server
+```
+dotnet run
+```
+Seed expense_data_seed.sql into your SQL Server 
 
 ExpenseApp - Angular application with ASP.Net MVC Backend
 
