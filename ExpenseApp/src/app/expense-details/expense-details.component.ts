@@ -37,7 +37,8 @@ import { FooterComponent } from '../footer/footer.component';
     MatButtonModule,
     MatDialogModule,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ExpenseDetailFormComponent
   ],
   providers: [ToastrService]
 })
@@ -53,14 +54,12 @@ export class ExpenseDetailsComponent {
   constructor(public service: ExpenseDetailService, 
     private toastr: ToastrService, public dialog: MatDialog) {
     this.service.getExpenseData().subscribe((data) => {
-      console.log(data);
       this.expenses = data;
       this.dataSource = new MatTableDataSource(this.expenses);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
-    this.service.dataSource
-    console.log(this.service.dataSource);
+    // this.service.dataSource
     this.dataSource = this.service.dataSource;
   }
 
@@ -71,7 +70,6 @@ export class ExpenseDetailsComponent {
 
   populateForm(selectedRecord:ExpenseDetail) {
     // To avoid reuse of same object assign to a new object
-    console.log(selectedRecord);
     selectedRecord.expenseDate = selectedRecord.expenseDate.substring(0,10);
     this.service.formData = Object.assign({}, selectedRecord);
   }
