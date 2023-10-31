@@ -1,39 +1,40 @@
-<h2 mat-dialog-title>{{ titleForm }} Enter New Expense</h2>
-<mat-dialog-content class="mat-typography">
-  <form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted">
+<h2>{{titleForm}}</h2>
+<form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted">
     <input type="hidden" name="expenseId" [value]="service.formData.expenseId" novalidate>
     <div class="class mb-3">
         <label>Expense Name</label>
-        <input class="form-control form-control-md" placeholder="Expense Name"
-        #expenseName="ngModel" name="expenseName" 
-        [(ngModel)] = "service.formData.expenseName" required>
+        <input class="form-control form-control-md" placeholder="Expense Name" #expenseName="ngModel" name="expenseName"
+            [(ngModel)]="service.formData.expenseName" required>
     </div>
     <div class="class mb-3">
         <label>Expense Category</label>
-        <select class="form-select form-select-md"
-        #expenseName="ngModel" name="expenseCategory" 
-        [(ngModel)] = "service.formData.expenseCategory" required
-        >
+        <select class="form-select form-select-md" #expenseName="ngModel" name="expenseCategory"
+            [(ngModel)]="service.formData.expenseCategory" required>
+            <option value="" disabled selected hidden>Select Category</option>
             <option *ngFor="let cat of categoryOptions" value="{{cat}}">{{cat}}</option>
 
-          </select>
+        </select>
     </div>
     <div class="class mb-3">
         <label>Expense Date</label>
-        <input class="form-control form-control-md" type="date"
-        #expenseDate = "ngModel" name="expenseDate" 
-        [(ngModel)]="service.formData.expenseDate" required/>
+        <input class="form-control form-control-md" type="date" #expenseDate="ngModel" name="expenseDate"
+            [(ngModel)]="service.formData.expenseDate" required max="{{maxDate | date: 'yyyy-MM-dd'}}" />
     </div>
     <div class="class mb-3">
         <label>Expense Amount</label>
-        <input class="form-control form-control-md" placeholder="Expense Amount"
-        #expenseAmount="ngModel" name="expenseAmount" 
-        [(ngModel)] = "service.formData.expenseAmount" required >
+        <input class="form-control form-control-md" placeholder="Expense Amount" #expenseAmount="ngModel"
+            name="expenseAmount" [(ngModel)]="service.formData.expenseAmount" required>
     </div>
-    <div class="d-grid">
-        <button class="btn btn-lg btn-success" type="submit">
-            Submit
-        </button>
+    <div class="row">
+        <div class="col-4">
+            <button class="btn btn-md btn-primary" (click)="service.resetForm(form)">
+                Clear
+            </button>
+        </div>
+        <div class="col-8">
+            <button class="btn btn-md btn-success" type="submit">
+                Submit
+            </button>
+        </div>
     </div>
-  </form>
-</mat-dialog-content>
+</form>
